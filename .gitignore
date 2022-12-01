@@ -1,0 +1,8 @@
+.env
+package-lock.json
+vendor/
+node_modules/
+public/images/
+config.json
+ssl.
+log/

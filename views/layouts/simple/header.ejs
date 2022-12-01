@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html data-theme="corporate" lang="en">
+<head>
+  <title><%- data?.meta?.title %></title>
+  <meta name="title" content="<%- data?.meta?.title %>"/>
+  <meta name="description" content="<%- data?.meta?.description %>">
+  <link rel="canonical" href="<%- data?.meta?.url %>">
+  <meta charset="utf-8"/>
+  <meta name="robots" content="<%- data?.meta?.robots %>">
+
+  <meta property="og:site_name" content="<%- process.env.PROJECT_Title %>" />
+  <meta property="og:title" content="<%- data?.meta?.title %>" />
+  <meta property="og:type" content="game" />
+  <meta property="og:url" content="<%- data?.meta?.url %>" />
+  <meta property="og:country_name" content="United States" />
+  <meta property="og:region" content="United States" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="<%- data?.meta?.image %>" />
+  <meta property="og:image:url" content="<%- data?.meta?.image %>" />
+  <meta property="og:image:secure_url" content="<%- data?.meta?.image %>" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="340" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta name="twitter:title" content="<%- data?.meta?.title %>" />
+  <meta name="twitter:description" content="<%- data?.meta?.description %>" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content=" <%- data?.meta?.image %>" />
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="referrer" content="no-referrer-when-downgrade"/>
+  <meta name="build-label" content="0.0.1"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff"/>
+  <meta name="apple-mobile-web-app-title" content="<%- process.env.PROJECT_Title %>"/>
+  <meta name="application-name" content="<%- process.env.PROJECT_Title %>"/>
+  <link rel="apple-touch-icon" sizes="57x57" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%- process.env.PROJECT_Main %>/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="<%- process.env.PROJECT_Main %>/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%- process.env.PROJECT_Main %>/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="<%- process.env.PROJECT_Main %>/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%- process.env.PROJECT_Main %>/icons/favicon-16x16.png">
+  <link rel="manifest" href="<%- process.env.PROJECT_Main %>/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="<%- process.env.PROJECT_Main %>/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+
+  <link rel="stylesheet" href="<%- process.env.PROJECT_Main %>/assets/font-awesome-4.7.0/css/font-awesome.min.css" />
+  <link href="<%- process.env.PROJECT_Main %>/assets/output.css" rel="stylesheet" type="text/css" />
+  <link href="<%- process.env.PROJECT_Main %>/assets/custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="loadContent">
+  <div class="navbar shadow-lg bg-neutral text-neutral-content rounded-none flex flex-nowrap overflow-auto">
+    <div class="flex-none px-2 mx-2">
+      <a href="<%- process.env.PROJECT_Main %>" class="text-lg font-bold">
+        <%- process.env.PROJECT_Title %>
+      </a>
+    </div>
+    <div class="flex flex-nowrap">
+      <button class="btn btn-ghost btn-sm rounded-btn m-1 downloadapp">
+        <i class="fa fa-download m-1" aria-hidden="true"></i> Download
+      </button>
+      <label for="modal-search" class="btn btn-ghost btn-sm rounded-btn m-1">
+        <i class="fa fa-search m-1" aria-hidden="true"></i> Search
+      </label>
+      <label for="modal-categories" class="btn btn-ghost btn-sm rounded-btn m-1">
+        <i class="fa fa-gamepad m-1" aria-hidden="true"></i> Categories
+      </label>
+      <label for="modal-tags" class="btn btn-ghost btn-sm rounded-btn m-1">
+        <i class="fa fa-tags m-1" aria-hidden="true"></i> Tags
+      </label>
+    </div>
+  </div>
+
+<input type="checkbox" id="modal-search" class="modal-toggle" />
+<label for="modal-search" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <label for="modal-search" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <div class="text-lg font-bold">Search</div>
+    <div class="form-control m-2">
+      <form class="flex items-center" method="get" action="/search">
+      <div class="input-group">
+        <input type="text" name="q" value="<%- query?.keyword %>" placeholder="Search…"
+          class="input input-bordered" style="width:60%" />
+        <button class="btn btn-square">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
+    </form>
+    </div>
+  </label>
+</label>
+
+<input type="checkbox" id="modal-categories" class="modal-toggle" onchange="GameSam.categoriesCheck()" />
+<label for="modal-categories" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <label for="modal-categories" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <div class="text-lg font-bold">Game Categories</div>
+    <div class="input-group">
+      <input type="text" value="" placeholder="Search category" class="input input-bordered categorySearch" style="width:60%" />
+      <button class="btn btn-square" onclick="GameSam.categoriesCheck()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+    <div class="p-2 categorylinks"></div>
+  </label>
+</label>
+
+
+<input type="checkbox" id="modal-tags" class="modal-toggle" onchange="GameSam.tagsCheck()"/>
+<label for="modal-tags" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <label for="modal-tags" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <div class="text-lg font-bold">Game Tags</div>
+    <div class="input-group">
+      <input type="text" value="" placeholder="Search tags" class="input input-bordered tagsSearch" style="width:60%" />
+      <button class="btn btn-square" onclick="GameSam.tagsCheck()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+    <div class="p-2 tagslinks"></div>
+  </label>
+</label>
+
+
+  <div class="min-h-screen bg-primary-focus">
+    <div class="hidden md:block p-2">
+      <div class="alert glass shadow-lg">
+        <h1 class="card-title text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">
+          <%- data?.meta?.title %>
+        </h1>
+        <li class="text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">
+          <%- data?.insertBreadcrumbs %>
+        </li>
+        <h2 class="text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">
+          <%- data?.meta?.description %>
+        </h2>
+      </div>
+    </div>
+    <div class="md:flex md:flex-row">
+      <div class="hidden md:block w-full md:w-1/4 leftmenu overflow-visible">
+      <div class="p-2 bg-black text-white sticky top-0 uppercase leftmenusticky">
+        <div class="m-2">
+          <div class="alert glass shadow-lg">
+            <div>
+              <span class="card-title text-primary-content">Game Categories</span>
+            </div>
+          </div>
+        </div>
+        <div class="m-2">
+          <div class="gameCategories max-h-96 overflow-auto  p-1">
+            <%- data['gameCategoriesHtml'] %>
+          </div>
+        </div>
+        <div class="m-2">
+          <div class="alert glass shadow-lg">
+            <div>
+              <span class="card-title text-primary-content">Game Tags</span>
+            </div>
+          </div>
+        </div>
+        <div class="m-2 max-h-96 overflow-auto p-1">
+          <div class="gameTags py-4">
+            <%- data['gameTagsHtml'] %>
+          </div>
+        </div>
+    </div>
+      </div>
+      <div class="block w-full md:w-3/4">
+        <div class="m-2 hidden md:block" style="overflow: auto; position: -webkit-sticky; position: sticky; top: 0%; z-index:1;">
+          <div
+            class="rounded-lg flex flex-row content-start place-content-start place-items-start items-center glass shadow-lg overflow-auto flex-nowrap justify-between">
+            <div class="m-1" style="padding:10px;">
+              <%- include('../../components/pagination', {query:query, data:data}) %>
+            </div>
+            <div class="m-1" style="padding:10px;min-width:150px;">
+              <form class="flex items-center" method="get" action="/search">
+                <div class="form-control">
+                  <div class="input-group">
+                    <input type="text" name="q" value="<%- query?.keyword %>" placeholder="Search…"
+                      class="input input-bordered" style="width:60%" />
+                    <button class="btn btn-square">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>

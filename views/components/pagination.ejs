@@ -1,0 +1,87 @@
+<% if(data['isGameFound'] != null && data['isGameFound'] == 1){ %>
+    <% if(query.categorysearch != null){ %>
+        <% if(query.pageNum == null || query.pageNum <= 1){ %>
+        <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+            <div class="btn-group">
+                <button class="btn glass">Page <%- (parseInt(query.pageNum)) %></button>
+                <a href="<%- process.env.PROJECT_Main %>/cat/<%- query.categorysearch.replaceAll(' ','-') %>/<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+                </div>
+        </div>
+        <% }else if(query.pageNum>1){ %>
+        <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+            <div class="btn-group"> 
+                <% if((parseInt(query.pageNum)) > 2){ %>
+                <a href="<%- process.env.PROJECT_Main %>/cat/<%- query.categorysearch.replaceAll(' ','-') %>/<%- (parseInt(query.pageNum)-1) %>" class="btn glass" title="Games">«</a>
+                <% }else{ %>
+                <a href="<%- process.env.PROJECT_Main %>/cat/<%- query.categorysearch.replaceAll(' ','-') %>" class="btn glass" title="Games">«</a>
+                <% } %>
+                <button class="btn glass">Page <%- query.pageNum %></button>
+                <a href="<%- process.env.PROJECT_Main %>/cat/<%- query.categorysearch.replaceAll(' ','-') %>/<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+            </div>
+        </div>
+        <% } %>
+    <% }else if(query.tagsearch != null){  %>
+        <% if(query.pageNum == null || query.pageNum < 2){ %>
+        <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+            <div class="btn-group">
+                <button class="btn glass">Page <%- (parseInt(query.pageNum)) %></button>
+                <a href="<%- process.env.PROJECT_Main %>/tag/<%- query.tagsearch.replaceAll(' ','-') %>/<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+                </div>
+        </div>
+        <% }else if(query.pageNum>1){ %>
+        <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+            <div class="btn-group"> 
+                <% if((parseInt(query.pageNum)) > 2){ %>
+                <a href="<%- process.env.PROJECT_Main %>/tag/<%- query.tagsearch.replaceAll(' ','-') %>/<%- (parseInt(query.pageNum)-1) %>" class="btn glass" title="Games">«</a>
+                <% }else{ %>
+                <a href="<%- process.env.PROJECT_Main %>/tag/<%- query.tagsearch.replaceAll(' ','-') %>" class="btn glass">«</a>
+                <% } %>
+                <button class="btn glass">Page <%- query.pageNum %></button>
+                <a href="<%- process.env.PROJECT_Main %>/tag/<%- query.tagsearch.replaceAll(' ','-') %>/<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+            </div>
+        </div>
+        <% } %>
+    <% }else if(query.keyword != null){ %>
+        <% if(query.pageNum == null || query.pageNum < 2){ %>
+            <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+                <div class="btn-group">
+                    <button class="btn glass">Page <%- query.pageNum %></button>
+                    <a href="<%- process.env.PROJECT_Main %>/search?q=<%- query.keyword.replaceAll(' ','-') %>&page=<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+                    </div>
+            </div>
+        <% }else if(query.pageNum>1){ %>
+            <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+                <div class="btn-group"> 
+                    <% if((parseInt(query.pageNum)) > 2){ %>
+                    <a href="<%- process.env.PROJECT_Main %>/search?q=<%- query.keyword.replaceAll(' ','-') %>&page=<%- (parseInt(query.pageNum)-1) %>" class="btn glass" title="Games">«</a>
+                    <% }else{ %>
+                    <a href="<%- process.env.PROJECT_Main %>/search?q=<%- query.keyword.replaceAll(' ','-') %>" class="btn glass">«</a>
+                    <% } %>
+                    <button class="btn glass">Page <%- query.pageNum %></button>
+                    <a href="<%- process.env.PROJECT_Main %>/search?q=<%- query.keyword.replaceAll(' ','-') %>&page=<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+                </div>
+            </div>
+        <% } %>
+    <% }else{ %>
+        <% if(query.pageNum == null || query.pageNum < 2){ %>
+        <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+            <div class="btn-group">
+                <button class="btn glass">Page <%- query.pageNum %></button>
+                <a href="<%- process.env.PROJECT_Main %>/page-<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+                </div>
+        </div>
+        <% }else if(query.pageNum>1){ %>
+        <div class="flex pagination justify-center justify-items-center items-center place-content-center w-full py-4">
+            <div class="btn-group"> 
+                <% if((parseInt(query.pageNum)) > 2){ %>
+                <a href="<%- process.env.PROJECT_Main %>/page-<%- (parseInt(query.pageNum)-1) %>" class="btn glass" title="Games">«</a>
+                <% }else{ %>
+                <a href="<%- process.env.PROJECT_Main %>" class="btn glass">«</a>
+                <% } %>
+                <button class="btn glass">Page <%- query.pageNum %></button>
+                <a href="<%- process.env.PROJECT_Main %>/page-<%- (parseInt(query.pageNum)+1) %>" class="btn glass" title="Games">»</a>
+            </div>
+        </div>
+        <% } %>
+    <% } %>
+  <% } %>

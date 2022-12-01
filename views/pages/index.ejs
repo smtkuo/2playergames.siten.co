@@ -1,0 +1,17 @@
+<%- include('../layouts/'+ theme +'/header', {query:query, data:data}) %>
+
+<div class="gameArea">
+  <%- data['gameHtml'] %>
+</div>
+
+<%- include('../components/pagination', {query:query, data:data}) %>
+
+<%- data['gameSuggestionHtml'] %>
+
+<%- data['randomGamesHtml'] %>
+
+<% if(data['specialContent'] != null){ %>
+  <div class="m-2 my-6"><div class="alert glass"><div class="w-full"><div class="text-primary-content"><%- data['specialContent'] %></div></div></div></div>
+<% } %>
+
+<%- include('../layouts/'+ theme +'/footer', {query:query, data:data}) %>

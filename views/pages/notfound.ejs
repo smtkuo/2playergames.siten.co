@@ -1,0 +1,25 @@
+<%- include('../layouts/'+ theme +'/header', {query:query, data:data}) %>
+<div class="p-2 py-6">
+    <div class="alert glass">
+    <div>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <div>
+    <h3 class="font-bold card-title text-primary-content">Not Found</h3>
+    <div class="text-xs"></div>
+    </div>
+    </div>
+    <div class="flex flex-row flex-wrap">
+        <label for="modal-search" class="btn btn-sm rounded-btn m-1">
+            <i class="fa fa-search m-1" aria-hidden="true"></i> Search
+          </label>
+          <label for="modal-categories" class="btn btn-sm rounded-btn m-1">
+            <i class="fa fa-gamepad m-1" aria-hidden="true"></i> Categories
+          </label>
+          <label for="modal-tags" class="btn btn-sm rounded-btn m-1">
+            <i class="fa fa-tags m-1" aria-hidden="true"></i> Tags
+          </label>
+          <button class="btn btn-sm" onclick='window.location.href = "<%- process.env.PROJECT_Main %>"'>Home</button>
+    </div>
+    </div>
+    </div>
+<%- include('../layouts/'+ theme +'/footer', {query:query, data:data}) %>
