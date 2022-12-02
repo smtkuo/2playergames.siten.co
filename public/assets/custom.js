@@ -37,11 +37,12 @@ const installButton = document.querySelector('.downloadapp');
 let beforeInstallPromptEvent
 window.addEventListener("beforeinstallprompt", function (e) {
     e.preventDefault();
-    console.log('asdasd')
+    installButton.style.display = 'block'
     beforeInstallPromptEvent = e
     installButton.addEventListener("click", function (mouseEvent) {
         e.prompt();
     });
+    installButton.hidden = false;
 });
 
 installButton.addEventListener("click", function (mouseEvent) {
