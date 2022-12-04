@@ -378,6 +378,30 @@ exports.playgame = (req, res, next) => {
 	})
 };
 
+exports.pageNotFound = async (req, res, next) => {
+	try {
+		return indexController.index(req, res, next, async function (err, results, data, query, req, res) {
+			data.breadcrumbs = []
+			// Default Meta
+			data['meta'] = {
+				title:  "Page Not Found | " + process.env.PROJECT_Title,
+				description: process.env.PROJECT_Title + ": Page not found." + process.env.PROJECT_Description,
+				url: process.env.PROJECT_Main + req.url,
+				robots: "noindex,follow"
+			}
+			data['meta'] = Object.index.meta(data['meta'], "title", Object.index.toTitleCase) 
+			data['meta'] = Object.index.meta(data['meta'], "description", Object.index.toDescriptionCase) 
+			data["breadcrumbs"].push(data['meta'])
+			data['slug'] = "home"
+			
+			return res.render("./pages/notfound", { theme: config.theme, query: query, data: data })
+		})
+	  } catch (err) {
+		console.log(err)
+	  }
+	
+}
+
 exports.update = indexController.update
 
 exports.gameview = indexController.gameview

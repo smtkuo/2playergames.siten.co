@@ -63,11 +63,8 @@ app.use(lusca.xssProtection(true));
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(require('./router/index'))
+app.get('*', require('./controllers/indexController').pageNotFound)
 app.use(clientErrorHandler)
-app.get('*', function(req, res) {
-    // REDIRECT HOME
-    res.render("./pages/notfound", { theme: config.theme, query: {}, data: {} })
-})
 
 // START ^^
 server.listen(serverPort, function() {
