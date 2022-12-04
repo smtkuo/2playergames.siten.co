@@ -185,9 +185,19 @@ exports.home = async (req, res, next) => {
 	
 			if (query.notfound == 1) {
 				
-				if(data['meta']['robots'] != null){
-					data['meta']['robots'] = "noindex,follow";
+				data.breadcrumbs = []
+				// Default Meta
+				data['meta'] = {
+					title:  "Page Not Found | " + process.env.PROJECT_Title,
+					description: process.env.PROJECT_Title + ": Page not found." + process.env.PROJECT_Description,
+					url: process.env.PROJECT_Main + req.url,
+					robots: "noindex,follow"
 				}
+				data['meta'] = Object.index.meta(data['meta'], "title", Object.index.toTitleCase) 
+				data['meta'] = Object.index.meta(data['meta'], "description", Object.index.toDescriptionCase) 
+				data["breadcrumbs"].push(data['meta'])
+				data['slug'] = "home"
+
 				res.render("./pages/notfound", { theme: config.theme, query: query, data: data })
 				return;
 			}
@@ -365,9 +375,19 @@ exports.playgame = (req, res, next) => {
 			if (query.categorysearch != null) query.categorysearch = query.categorysearch.replace(" ", "-")
 
 			if (query.notfound == 1) {
-				if(data['meta']['robots'] != null){
-					data['meta']['robots'] = "noindex,nofollow";
+				data.breadcrumbs = []
+				// Default Meta
+				data['meta'] = {
+					title:  "Page Not Found | " + process.env.PROJECT_Title,
+					description: process.env.PROJECT_Title + ": Page not found." + process.env.PROJECT_Description,
+					url: process.env.PROJECT_Main + req.url,
+					robots: "noindex,follow"
 				}
+				data['meta'] = Object.index.meta(data['meta'], "title", Object.index.toTitleCase) 
+				data['meta'] = Object.index.meta(data['meta'], "description", Object.index.toDescriptionCase) 
+				data["breadcrumbs"].push(data['meta'])
+				data['slug'] = "home"
+
 				res.render("./pages/notfound", { theme: config.theme, query: query, data: data })
 			}
 
