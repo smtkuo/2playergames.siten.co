@@ -147,7 +147,7 @@
 
   <div class="min-h-screen bg-primary-focus">
     <div class="hidden md:block p-2">
-      <div class="alert glass shadow-lg">
+      <div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg shadow-lg">
         <h1 class="card-title text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">
           <%- data?.meta?.title %>
         </h1>
@@ -161,9 +161,9 @@
     </div>
     <div class="md:flex md:flex-row">
       <div class="hidden md:block w-full md:w-1/4 leftmenu overflow-visible">
-      <div class="p-2 bg-black text-white sticky top-0 uppercase leftmenusticky">
+      <div class="p-2 text-white sticky top-0 uppercase leftmenusticky">
         <div class="m-2">
-          <div class="alert glass shadow-lg">
+          <div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg shadow-lg">
             <div>
               <span class="card-title text-primary-content">Game Categories</span>
             </div>
@@ -175,7 +175,7 @@
           </div>
         </div>
         <div class="m-2">
-          <div class="alert glass shadow-lg">
+          <div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg shadow-lg">
             <div>
               <span class="card-title text-primary-content">Game Tags</span>
             </div>
@@ -191,7 +191,7 @@
       <div class="block w-full md:w-3/4">
         <div class="m-2 hidden md:block" style="overflow: auto; position: -webkit-sticky; position: sticky; top: 0%; z-index:1;">
           <div
-            class="rounded-lg flex flex-row content-start place-content-start place-items-start items-center glass shadow-lg overflow-auto flex-nowrap justify-between">
+            class="rounded-lg flex flex-row content-start place-content-start place-items-start items-center backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg overflow-auto flex-nowrap justify-between">
             <div class="m-1" style="padding:10px;">
               <%- include('../../components/pagination', {query:query, data:data}) %>
             </div>

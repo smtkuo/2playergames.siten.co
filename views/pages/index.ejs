@@ -11,7 +11,7 @@
 <%- data['randomGamesHtml'] %>
 
 <% if(data['specialContent'] != null){ %>
-  <div class="m-2 my-6"><div class="alert glass"><div class="w-full"><div class="text-primary-content"><%- data['specialContent'] %></div></div></div></div>
+  <div class="m-2 my-6"><div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg"><div class="w-full"><div class="text-primary-content"><%- data['specialContent'] %></div></div></div></div>
 <% } %>
 
 <%- include('../layouts/'+ theme +'/footer', {query:query, data:data}) %>

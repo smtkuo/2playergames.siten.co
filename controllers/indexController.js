@@ -260,7 +260,7 @@ exports.playgame = (req, res, next) => {
 				val = val.replaceAll(' ','-')
 				val = val.replaceAll('#','')
 				GameLinks += `
-				<a href='${process.env.PROJECT_Main}/cat/${val}' class="btn btn-sm glass m-1"><i class="fa fa-gamepad m-1" aria-hidden="true"></i> ${val.replaceAll('-', ' ')}</a>
+				<a href='${process.env.PROJECT_Main}/cat/${val}' class="btn btn-sm backdrop-blur-sm backdrop-brightness-125 btn-primary font-bold m-1"><i class="fa fa-gamepad m-1" aria-hidden="true"></i> ${val.replaceAll('-', ' ')}</a>
 				`
 			}
 			for(var key in GameTags){
@@ -268,7 +268,7 @@ exports.playgame = (req, res, next) => {
 				val = val.replaceAll(' ','-')
 				val = val.replaceAll('#','')
 				GameLinks += `
-				<a href='${process.env.PROJECT_Main}/tag/${val}' class="btn btn-sm glass m-1"><i class="fa fa-tag m-1" aria-hidden="true"></i> ${val.replace('-', ' ')}</a>
+				<a href='${process.env.PROJECT_Main}/tag/${val}' class="btn btn-sm backdrop-blur-sm backdrop-brightness-125 btn-primary font-bold m-1"><i class="fa fa-tag m-1" aria-hidden="true"></i> ${val.replace('-', ' ')}</a>
 				`
 			}
 			
@@ -317,19 +317,19 @@ exports.playgame = (req, res, next) => {
 			// IMAGES END
 			data['playGameHTML'] += `
 			<div id="gamebuttons" class="p-2 py-6 gamebuttons" style="display:none;">
-			<div class="alert glass">
+			<div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg">
 			<button class="btn btn-active btn-primary" onclick="openFullscreen()"><i class="fa fa-arrows-alt m-1" aria-hidden="true"></i> Fullscreen</button>
 			</div>
 			</div>
 
 			<div class="p-2 py-6">
-			<div id="gameLoad" class="alert glass gameLoad" style="height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+			<div id="gameLoad" class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg gameLoad" style="height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden;">
 			<div id="gameplay"></div>
 			</div>
 			</div>
 
 			<div class="p-2 py-6">
-			<div class="alert glass">
+			<div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg">
 			<div class="text-primary-content md:w-80 flex-col"><p style="display:block;"><img alt="${GameDetail['Title']}" src="${GameImageView}" style="max-width:150px;height:auto;" /></p><p style="display:block;">${GameDetail['Title']}</p><div class="max-h-48 overflow-auto">${GameLinks}</div></div>
 			<p class="text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">${Object.index.encodeHTML(GameDetail['Description'])}</p>
 			<p class="text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">${Object.index.encodeHTML(GameDetail['Instructions'])}</p>
