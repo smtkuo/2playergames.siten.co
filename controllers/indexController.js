@@ -184,7 +184,6 @@ exports.home = async (req, res, next) => {
 			if (query.categorysearch != null) query.categorysearch = query.categorysearch.replaceAll(' ','-')
 	
 			if (query.notfound == 1) {
-				
 				data.breadcrumbs = []
 				// Default Meta
 				data['meta'] = {
@@ -270,7 +269,7 @@ exports.playgame = (req, res, next) => {
 				val = val.replaceAll(' ','-')
 				val = val.replaceAll('#','')
 				GameLinks += `
-				<a href='${process.env.PROJECT_Main}/cat/${val}' class="btn btn-sm backdrop-blur-sm backdrop-brightness-125 btn-primary font-bold m-1"><i class="fa fa-gamepad m-1" aria-hidden="true"></i> ${val.replaceAll('-', ' ')}</a>
+				<a href='${process.env.PROJECT_Main}/cat/${val}' class="btn btn-sm  backdrop-blur-sm backdrop-brightness-125 bg-transparent m-1"><i class="fa fa-gamepad m-1" aria-hidden="true"></i> ${val.replaceAll('-', ' ')}</a>
 				`
 			}
 			for(var key in GameTags){
@@ -278,7 +277,7 @@ exports.playgame = (req, res, next) => {
 				val = val.replaceAll(' ','-')
 				val = val.replaceAll('#','')
 				GameLinks += `
-				<a href='${process.env.PROJECT_Main}/tag/${val}' class="btn btn-sm backdrop-blur-sm backdrop-brightness-125 btn-primary font-bold m-1"><i class="fa fa-tag m-1" aria-hidden="true"></i> ${val.replace('-', ' ')}</a>
+				<a href='${process.env.PROJECT_Main}/tag/${val}' class="btn btn-sm  backdrop-blur-sm backdrop-brightness-125 bg-transparent m-1"><i class="fa fa-tag m-1" aria-hidden="true"></i> ${val.replace('-', ' ')}</a>
 				`
 			}
 			
@@ -324,31 +323,55 @@ exports.playgame = (req, res, next) => {
 				data['meta']["image"] =   GameImageView;
 			}
 
+			var gameId = GameDetail['id']
+			var gameNextId = (gameId+1); 
+			var gamePrevId = (gameId-1); 
+
+			var navLink = ''
+			if(GameDetail['prev'] != null){
+				navLink += `<a href='${process.env.PROJECT_Main}/play-game/${GameDetail['prev']['id']}-${Object.index.convertToSlug(GameDetail['prev']["Title"])}' class="btn btn-active text-2xl w-1/3" title="${GameDetail['prev']['Title']}"><i class="fa fa-arrow-left m-1" aria-hidden="true"></i></a>`
+			}
+			
+			if(GameDetail['shuffle'] != null){
+				navLink += `<a href='${process.env.PROJECT_Main}/play-game/${GameDetail['shuffle']['id']}-${Object.index.convertToSlug(GameDetail['shuffle']["Title"])}' class="btn btn-active text-2xl w-1/3" title="${GameDetail['shuffle']['Title']}"><i class="fa fa-random m-1" aria-hidden="true"></i></a>`
+			}
+
+			if(GameDetail['next'] != null){
+				navLink += `<a href='${process.env.PROJECT_Main}/play-game/${GameDetail['next']['id']}-${Object.index.convertToSlug(GameDetail['next']["Title"])}' class="btn btn-active text-2xl w-1/3" title="${GameDetail['next']['Title']}"><i class="fa fa-arrow-right m-1" aria-hidden="true"></i></a>`
+			}
 			// IMAGES END
 			data['playGameHTML'] += `
+
+			<div class="p-2 py-1 w-full">
+			<div class="btn-group w-full m-auto">
+				${navLink}
+			</div>
+			</div>
+
 			<div id="gamebuttons" class="p-2 py-6 gamebuttons" style="display:none;">
-			<div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg">
+			<div class="alert  backdrop-blur-sm backdrop-brightness-125 bg-transparent">
 			<button class="btn btn-active btn-primary" onclick="openFullscreen()"><i class="fa fa-arrows-alt m-1" aria-hidden="true"></i> Fullscreen</button>
 			</div>
 			</div>
 
 			<div class="p-2 py-6">
-			<div id="gameLoad" class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg gameLoad" style="height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+			<div id="gameLoad" class="alert  backdrop-blur-sm backdrop-brightness-125 bg-transparent gameLoad" style="height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden;">
 			<div id="gameplay"></div>
 			</div>
 			</div>
 
 			<div class="p-2 py-6">
-			<div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg">
+			<div class="alert  backdrop-blur-sm backdrop-brightness-125 bg-transparent">
 			<div class="text-primary-content md:w-80 flex-col"><p style="display:block;"><img alt="${GameDetail['Title']}" src="${GameImageView}" style="max-width:150px;height:auto;" /></p><p style="display:block;">${GameDetail['Title']}</p><div class="max-h-48 overflow-auto">${GameLinks}</div></div>
 			<p class="text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">${Object.index.encodeHTML(GameDetail['Description'])}</p>
 			<p class="text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">${Object.index.encodeHTML(GameDetail['Instructions'])}</p>
 			</div>
 			</div>
 			</div>
+
 			`;
 
-			data['gamePlayScripts'] = `var gameCod = '<iframe id="gameScreenSource" src="/gameview.php?q=g&gurl=${GameDetail['Url']}" title="Game" style="width:100%;height:${GameDetail['Height']}px;"></iframe>'`;
+			data['gamePlayScripts'] = `var gameCod = '<iframe id="gameScreenSource" src="/gameview.php?q=g&gurl=${GameDetail['Url']}" title="Game" style="width:100%;height:${GameDetail['Height']}px;max-height:500px;"></iframe>'`;
 
 			// GAME
 			data['GameDetail'] = GameDetail
