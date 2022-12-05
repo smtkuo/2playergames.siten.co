@@ -34,6 +34,10 @@ exports.home = async (req, res, next) => {
 			data['slug'] = "home"
 	
 			if (req.params.category != null) {
+				if(query.categorysearch != Object.index.convertToSlug(query.categorysearch)){
+					return res.redirect('/tag/'+Object.index.convertToSlug(query.categorysearch));
+				}
+				
 				data['meta'] = {
 					title: query.categorysearch + " | " + process.env.PROJECT_ShortDescription,
 					description: process.env.PROJECT_Title + ": " + query.categorysearch + ". Games: " + query.categorysearch + " categories.",
@@ -65,7 +69,11 @@ exports.home = async (req, res, next) => {
 	
 			if (req.params.tag != null) {
 				query.tagsearch = req.params.tag
-	
+
+				if(query.tagsearch != Object.index.convertToSlug(query.tagsearch)){
+					return res.redirect('/tag/'+Object.index.convertToSlug(query.tagsearch));
+				}
+
 				data['meta'] = {
 					title: query.tagsearch + " | " + process.env.PROJECT_ShortDescription,
 					description: process.env.PROJECT_Title + ": " + query.tagsearch + ". Games: " + query.tagsearch + " tags.",
@@ -117,6 +125,10 @@ exports.home = async (req, res, next) => {
 			}
 	
 			if (query.keyword != null) {
+
+				if(query.categorysearch != Object.index.convertToSlug(query.categorysearch)){
+				}
+
 				data['meta'] = {
 					title: query.keyword + " | " + process.env.PROJECT_ShortDescription,
 					description: process.env.PROJECT_Title + " | " + query.keyword + ". Games Page: " + query.pageNum + ".",
