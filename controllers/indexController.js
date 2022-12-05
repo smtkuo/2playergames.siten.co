@@ -125,8 +125,8 @@ exports.home = async (req, res, next) => {
 			}
 	
 			if (query.keyword != null) {
-
-				if(query.categorysearch != Object.index.convertToSlug(query.categorysearch)){
+				if(req.query.q != Object.index.convertToSlug(req.query.q)){
+					return res.redirect("/search?q=" + Object.index.convertToSlug(req.query.q));
 				}
 
 				data['meta'] = {
