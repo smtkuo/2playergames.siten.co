@@ -35,7 +35,7 @@ exports.home = async (req, res, next) => {
 	
 			if (req.params.category != null) {
 				if(query.categorysearch != Object.index.convertToSlug(query.categorysearch)){
-					return res.redirect('/tag/'+Object.index.convertToSlug(query.categorysearch));
+					return res.redirect('/cat/'+Object.index.convertToSlug(query.categorysearch));
 				}
 				
 				data['meta'] = {
