@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="corporate" lang="en">
+<html data-theme="light" lang="en">
 <head>
   <title><%- data?.meta?.title %></title>
   <meta name="title" content="<%- data?.meta?.title %>"/>
@@ -27,7 +27,10 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content=" <%- data?.meta?.image %>" />
  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link href="<%- process.env.PROJECT_Main %>/assets/output.css" rel="stylesheet" type="text/css" />
+  <link href="<%- process.env.PROJECT_Main %>/assets/custom.css" rel="stylesheet" type="text/css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge"/>
   <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="referrer" content="no-referrer-when-downgrade"/>
@@ -56,14 +59,12 @@
   
 
   <link rel="stylesheet" href="<%- process.env.PROJECT_Main %>/assets/font-awesome-4.7.0/css/font-awesome.min.css" />
-  <link href="<%- process.env.PROJECT_Main %>/assets/output.css" rel="stylesheet" type="text/css" />
-  <link href="<%- process.env.PROJECT_Main %>/assets/custom.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="loadContent">
   <div class="navbar shadow-lg bg-neutral text-neutral-content rounded-none flex flex-nowrap overflow-auto">
     <div class="flex-none px-2 mx-2">
       <a href="<%- process.env.PROJECT_Main %>" class="text-lg font-bold">
-        <%- process.env.PROJECT_Title %>
+        ZibuGames
       </a>
     </div>
     <div class="flex flex-nowrap">
@@ -147,7 +148,7 @@
 
   <div class="min-h-screen bg-primary-focus">
     <div class="hidden md:block p-2">
-      <div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg shadow-lg">
+      <div class="alert  backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg">
         <h1 class="card-title text-primary-content md:w-80 max-h-48 overflow-auto justify-start content-start flex-col">
           <%- data?.meta?.title %>
         </h1>
@@ -163,7 +164,7 @@
       <div class="hidden md:block w-full md:w-1/4 leftmenu overflow-visible">
       <div class="p-2 text-white sticky top-0 uppercase leftmenusticky">
         <div class="m-2">
-          <div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg shadow-lg">
+          <div class="alert  backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg">
             <div>
               <span class="card-title text-primary-content">Game Categories</span>
             </div>
@@ -175,7 +176,7 @@
           </div>
         </div>
         <div class="m-2">
-          <div class="alert backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg shadow-lg">
+          <div class="alert  backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg">
             <div>
               <span class="card-title text-primary-content">Game Tags</span>
             </div>
@@ -191,7 +192,7 @@
       <div class="block w-full md:w-3/4">
         <div class="m-2 hidden md:block" style="overflow: auto; position: -webkit-sticky; position: sticky; top: 0%; z-index:1;">
           <div
-            class="rounded-lg flex flex-row content-start place-content-start place-items-start items-center backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg overflow-auto flex-nowrap justify-between">
+            class="rounded-lg flex flex-row content-start place-content-start place-items-start items-center  backdrop-blur-sm backdrop-brightness-125 bg-transparent shadow-lg overflow-auto flex-nowrap justify-between">
             <div class="m-1" style="padding:10px;">
               <%- include('../../components/pagination', {query:query, data:data}) %>
             </div>
