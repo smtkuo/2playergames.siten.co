@@ -218,6 +218,7 @@ exports.home = async (req, res, next) => {
 			
 			var specialContentApi = process.env.SPECIAL_Content_API+"?q=api&slug="+data['slug']+"&site="+process.env.SPECIAL_Content_URL
 			console.log(specialContentApi)
+			/*
 			await request(specialContentApi, function (error, response, body) {
 				var object = Object.index.tryParseJSONObject(body)
 				if(object['success'] == 1){
@@ -228,6 +229,7 @@ exports.home = async (req, res, next) => {
 					}
 				}
 			});
+			*/
 			res.render("./pages/index", { theme: config.theme, query: query, data: data })
 		})
 	  } catch (err) {
